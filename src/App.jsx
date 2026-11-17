@@ -1,12 +1,12 @@
 import { useState } from "react";
-import vincentPhoto from "./assets/vincent.webp";
+import vincentPhoto from "./assets/vincent_silver_grey.webp";
 import {
-  Mail,
   ArrowUpRight,
   Code2,
   Terminal,
   Cpu,
-  Menu
+  Menu,
+  X,
 } from "lucide-react";
 
 
@@ -16,7 +16,7 @@ function DeveloperTerminal() {
   const [history, setHistory] = useState([
     {
       type: "output",
-      text: "Welcome to VINCENT.EXE terminal.",
+      text: "Welcome to LOTELEI.EXE terminal.",
     },
     {
       type: "output",
@@ -86,11 +86,11 @@ function DeveloperTerminal() {
             <span className="w-3 h-3 rounded-full bg-green-500"></span>
 
             <span className="text-gray-400 text-xs font-mono ml-3">
-              lootelei@exe:~
+              lotelei@exe:~
             </span>
           </div>
 
-          <div className="p-5 font-mono text-sm min-h-64">
+          <div className="p-5 font-mono text-sm min-h-[16rem]">
 
             {history.map((line, index) => (
               <p
@@ -106,9 +106,9 @@ function DeveloperTerminal() {
               </p>
             ))}
 
-            <div className="flex items-center gap-2 mt-4">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-4">
               <span className="text-lime-400 whitespace-nowrap">
-                visitor@lootelei-exe:~$
+                visitor@lotelei-exe:~$
               </span>
 
               <input
@@ -117,7 +117,8 @@ function DeveloperTerminal() {
                 onChange={(event) => setCommand(event.target.value)}
                 onKeyDown={handleCommand}
                 placeholder="Type a command..."
-                className="bg-transparent outline-none text-white w-full placeholder:text-gray-600"
+                aria-label="Terminal command"
+                className="bg-transparent outline-none text-white flex-1 min-w-[10rem] placeholder:text-gray-600"
               />
             </div>
 
@@ -138,7 +139,7 @@ function App() {
       <nav className="flex items-center justify-between px-6 md:px-16 py-6 border-b border-white/10">
 
         <a href="#" className="text-2xl font-black tracking-widest">
-          LOOTELEI<span className="text-lime-400">.EXE</span>
+          LOTELEI<span className="text-lime-400">.EXE</span>
         </a>
 
         <div className="hidden md:flex items-center gap-10 text-sm text-gray-400">
@@ -159,34 +160,35 @@ function App() {
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-lime-400"
           aria-label="Toggle navigation menu"
-           aria-expanded={menuOpen}
->
-  <Menu size={26} />
-</button>
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
       </nav>
+
       {menuOpen && (
-  <div className="md:hidden bg-[#0d110e] border-b border-white/10 px-6 py-6 flex flex-col gap-6">
+        <div className="md:hidden bg-[#0d110e] border-b border-white/10 px-6 py-6 flex flex-col gap-6">
 
-    {[
-      ["About", "#about"],
-      ["Skills", "#skills"],
-      ["Projects", "#projects"],
-      ["Contact", "#contact"],
-    ].map(([label, link]) => (
-      <a
-        key={label}
-        href={link}
-        onClick={() => setMenuOpen(false)}
-        className="text-gray-300 hover:text-lime-400 transition"
-      >
-        {label}
-      </a>
-    ))}
+          {[
+            ["About", "#about"],
+            ["Skills", "#skills"],
+            ["Projects", "#projects"],
+            ["Contact", "#contact"],
+          ].map(([label, link]) => (
+            <a
+              key={label}
+              href={link}
+              onClick={() => setMenuOpen(false)}
+              className="text-gray-300 hover:text-lime-400 transition"
+            >
+              {label}
+            </a>
+          ))}
 
-  </div>
-)}
+        </div>
+      )}
 
-     
+
       {/* HERO */}
       <section className="relative overflow-hidden px-6 md:px-16 py-24 md:py-32">
 
@@ -289,7 +291,7 @@ function App() {
 
                     <p>
                       <span className="text-sky-300">name</span>:{" "}
-                      <span className="text-yellow-300">"Vincent Lootelei"</span>,
+                      <span className="text-yellow-300">"Vincent Lotelei"</span>,
                     </p>
 
                     <p>
@@ -384,8 +386,8 @@ function App() {
 
       </section>
 
-<DeveloperTerminal />
-     
+      <DeveloperTerminal />
+
       {/* ABOUT */}
       <section
         id="about"
@@ -410,21 +412,21 @@ function App() {
                   className="w-full h-auto object-contain"
                 />
 
-                <div className="absolute bottom-4 left-4 bg-black/80 border border-lime-400/30 rounded-lg px-4 py-2">
-                  <p className="text-lime-400 text-xs font-mono">
-                    SYSTEM USER
-                  </p>
-                  <p className="text-white font-semibold">
-                    VINCENT.EXE
-                  </p>
-                </div>
+                <div className="absolute bottom-4 left-4">
+  <p className="text-lime-400 text-xs font-mono font-bold tracking-widest drop-shadow-lg">
+    SYSTEM USER
+  </p>
+  <p className="text-white font-bold text-lg tracking-wide drop-shadow-lg">
+    LOTELEI.EXE
+  </p>
+</div>
               </div>
             </div>
 
             {/* ABOUT TEXT */}
             <div>
               <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-                Hello, I'm Vincent.
+                Hello, I'm Lotelei
                 <span className="block text-lime-400 mt-2">
                   Developer & Problem Solver.
                 </span>
@@ -476,8 +478,6 @@ function App() {
       </section>
 
 
-      {/* SKILLS */}
-     
       {/* SKILLS */}
       <section
         id="skills"
@@ -612,7 +612,6 @@ function App() {
       </section>
 
 
-      
       {/* PROJECTS */}
       <section
         id="projects"
@@ -777,7 +776,6 @@ function App() {
       </section>
 
 
-      
       {/* CONTACT */}
       <section
         id="contact"
@@ -807,7 +805,7 @@ function App() {
               </p>
 
               <a
-                href="mailto:your-email@example.com"
+                href="mailto:vincentlotelei@gmail.com"
                 className="inline-flex items-center gap-3 mt-10 bg-lime-400 text-black px-7 py-4 rounded-lg font-semibold hover:bg-lime-300 transition"
               >
                 Send me an email
@@ -819,20 +817,21 @@ function App() {
             <div className="flex flex-col justify-center gap-5">
 
               <a
-                href="mailto:your-email@example.com"
+                href="mailto:vincentlotelei@gmail.com"
                 className="group flex items-center justify-between border border-white/10 bg-white/[0.02] rounded-xl p-6 hover:border-lime-400/50 transition"
               >
                 <div>
                   <p className="text-gray-500 text-sm mb-2">Email</p>
                   <p className="text-white font-medium">
-                    your-email@example.com
+                    vincentlotelei@gmail.com
                   </p>
                 </div>
                 <ArrowUpRight className="text-lime-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition" />
               </a>
 
+              {/* TODO: replace with your real GitHub profile URL, e.g. https://github.com/your-username */}
               <a
-                href="https://github.com/"
+                href="https://github.com/GWIJI71/"
                 target="_blank"
                 rel="noreferrer"
                 className="group flex items-center justify-between border border-white/10 bg-white/[0.02] rounded-xl p-6 hover:border-lime-400/50 transition"
@@ -846,6 +845,7 @@ function App() {
                 <ArrowUpRight className="text-lime-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition" />
               </a>
 
+              {/* TODO: replace with your real LinkedIn profile URL, e.g. https://www.linkedin.com/in/your-username */}
               <a
                 href="https://linkedin.com/"
                 target="_blank"
@@ -860,21 +860,14 @@ function App() {
                 </div>
                 <ArrowUpRight className="text-lime-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition" />
               </a>
-
             </div>
           </div>
-
-          <div className="mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-gray-500 text-sm">
-            <p>© 2026 VINCENT.EXE. All rights reserved.</p>
-            <p>Designed & built with React.</p>
-          </div>
-
         </div>
       </section>
 
 
       <footer className="px-6 md:px-16 py-8 border-t border-white/10 text-gray-600 text-sm flex flex-wrap justify-between gap-4">
-        <p>© 2026 VINCENT.EXE</p>
+        <p>© 2026 LOTELEI.EXE</p>
         <p>Designed & Built with React.</p>
       </footer>
 

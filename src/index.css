@@ -49,3 +49,6 @@ body {
 .float-slow {
   animation: floatCard 5s ease-in-out infinite;
 }
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal, .float-slow { animation: none; }
+}
